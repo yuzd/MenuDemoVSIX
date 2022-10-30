@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <Extern href="stdidcmd.h"/>
+  <Extern href="vsshlids.h"/>
+  <Commands package="guidMenuDemoVSIXPackage">
+    <Menus>
+      <Menu guid ="guidMenuDemoVSIXPackageCmdSet" id="MyMenu" priority="0x3110" type="Menu">
+        <Parent guid="guidMenuDemoVSIXPackageCmdSet" id="MyMenuGroup1"/>
+        <Strings>
+          <ButtonText>New</ButtonText>
+          <CommandName>New</CommandName>
+        </Strings>
+      </Menu>
+    </Menus>
+    <Groups>
+      <Group guid="guidMenuDemoVSIXPackageCmdSet" id="MyMenuGroup1" priority="0x0600">
+      </Group>
+      <Group guid="guidMenuDemoVSIXPackageCmdSet" id="MyMenuGroup2" priority="0x0600">
+        <Parent guid="guidMenuDemoVSIXPackageCmdSet" id="MyMenu"/>
+      </Group>
+    </Groups>
+    <Buttons>
+      <Button guid="guidMenuDemoVSIXPackageCmdSet" id="TestCommandId" priority="0x0100" type="Button">
+        <Parent guid="guidMenuDemoVSIXPackageCmdSet" id="MyMenuGroup2" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Icon guid="guidImages" id="bmpPic1" />
+        <Strings>
+          <ButtonText>Invoke TestCommand</ButtonText>
+        </Strings>
+      </Button>
+    </Buttons>
+
+    <!--The bitmaps section is used to define the bitmaps that are used for the commands.-->
+    <Bitmaps>
+      <Bitmap guid="guidImages" href="Resources\TestCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough"/>
+    </Bitmaps>
+  </Commands>
+
+  <CommandPlacements>
+    <CommandPlacement guid="guidMenuDemoVSIXPackageCmdSet" id="MyMenuGroup1" priority="0x0000">
+      <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE"/>
+    </CommandPlacement>
+    <CommandPlacement guid="guidMenuDemoVSIXPackageCmdSet" id="MyMenuGroup1" priority="0x0000">
+      <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_ITEMNODE" />
+    </CommandPlacement>
+    <CommandPlacement guid="guidMenuDemoVSIXPackageCmdSet" id="MyMenuGroup1" priority="0x0000">
+      <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_CODEWIN" />
+    </CommandPlacement>
+  </CommandPlacements>
+
+  <Symbols>
+    <!-- This is the package guid. -->
+    <GuidSymbol name="guidMenuDemoVSIXPackage" value="{d55fa036-2223-4d71-9069-60f68cfaa753}" />
+
+    <!-- This is the guid used to group the menu commands together -->
+    <GuidSymbol name="guidMenuDemoVSIXPackageCmdSet" value="{bfd38d96-e3cd-4f50-b857-8167dd432a0e}">
+      <IDSymbol name="MyMenuGroup1" value="0x1020" />
+      <IDSymbol name="MyMenuGroup2" value="0x1021" />
+      <IDSymbol name="MyMenu" value="0x1022" />
+      <IDSymbol name="TestCommandId" value="0x0100" />
+    </GuidSymbol>
+
+    <GuidSymbol name="guidImages" value="{31c62700-2d98-4de9-86a5-88b9e947c427}" >
+      <IDSymbol name="bmpPic1" value="1" />
+      <IDSymbol name="bmpPic2" value="2" />
+      <IDSymbol name="bmpPicSearch" value="3" />
+      <IDSymbol name="bmpPicX" value="4" />
+      <IDSymbol name="bmpPicArrows" value="5" />
+      <IDSymbol name="bmpPicStrikethrough" value="6" />
+    </GuidSymbol>
+  </Symbols>
+</CommandTable>
